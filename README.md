@@ -4,7 +4,7 @@ Python/Flask web app to find and display the next buses from a particular stop. 
 It was as much a chance for me to get back into using Python, as it has been some time. There are other, more comprehensive soltuions out there such as PyTrafik.
 
 ## Initiation
-Download the files, edit config.py and include your Key and Secret and then just run from the command line with python server.py
+Download the files, edit config.py and include your Key and Secret and then just run from the command line with python server.py. Keys can be obtained from the [Västtrafik developer portal](https://developer.vasttrafik.se) after registering an account. 
 
 You will need to have installed the various modules of course, but all can be done with "pip install XXXX"
 
