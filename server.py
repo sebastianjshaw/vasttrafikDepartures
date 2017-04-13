@@ -41,21 +41,16 @@ def index(name=None):
 	    r = requests.get(url=url, params=parameters, headers=headers) # response is returned in variable r
 	    return r; #r is returned to anything calling the function.
 
-	while True:
+		# while True:
 
-		requestTime = time.strftime("%Y-%m-%d - %H:%M:%S")
-		auth_token=authorize() #calls the authorize method and gets the token.
-		r = requestDepartures() #calls the departure function
-		json_results = json.loads(r.content.decode('UTF-8'), 'UTF-8') # This takes the request data (r) turns it into valid json and drops it into the json_results variable. (parameterised with variables for later abstraction)
-		busFilter = [row for row in json_results["DepartureBoard"]["Departure"] if vBus == row["sname"] and vTrack == row["track"]] # This filters the json data and shows only vBus on vTrack
-		firstBus = busFilter[0]['rtTime'] #takes the first result of the above filter and makes it a direct parameter
-		secondBus = busFilter[1]['rtTime'] #takes the second result of the busFUlter and makes it a direct paramter
-		return render_template('data.html', r=r, name=name, vBus=vBus, vTrack=vTrack, firstBus=firstBus, secondBus=secondBus, requestTime=requestTime) #returns all the relevant fields for the flask HTML file to render the information.
-		time.sleep(120)	#sets the while look to sleep for 120 seconds before rerunning.
-
-	else:
-		print("There was an error with the application")
-
+	requestTime = time.strftime("%Y-%m-%d - %H:%M:%S")
+	auth_token=authorize() #calls the authorize method and gets the token.
+	r = requestDepartures() #calls the departure function
+	json_results = json.loads(r.content.decode('UTF-8'), 'UTF-8') # This takes the request data (r) turns it into valid json and drops it into the json_results variable. (parameterised with variables for later abstraction)
+	busFilter = [row for row in json_results["DepartureBoard"]["Departure"] if vBus == row["sname"] and vTrack == row["track"]] # This filters the json data and shows only vBus on vTrack
+	firstBus = busFilter[0]['rtTime'] #takes the first result of the above filter and makes it a direct parameter
+	secondBus = busFilter[1]['rtTime'] #takes the second result of the busFUlter and makes it a direct paramter
+	return render_template('data.html', r=r, name=name, vBus=vBus, vTrack=vTrack, firstBus=firstBus, secondBus=secondBus, requestTime=requestTime) #returns all the relevant fields for the flask HTML file to render the information.
 
 
 if __name__ == '__main__':

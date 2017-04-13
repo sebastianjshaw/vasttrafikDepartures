@@ -3,13 +3,26 @@ Python/Flask web app to find and display the next buses from a particular stop. 
 
 It was as much a chance for me to get back into using Python, as it has been some time. There are other, more comprehensive soltuions out there such as PyTrafik.
 
-## Initiation
-Download the files, edit config.py and include your Key and Secret and then just run from the command line with python server.py. Keys can be obtained from the [Västtrafik developer portal](https://developer.vasttrafik.se) after registering an account. 
+## Installation
+Checkout the repository, and update the `config.py` file to include your `CONSUMER_KEY` and `CONSUMER_SECRET`.
 
-You will need to have installed the various modules of course, but all can be done with "pip install XXXX"
+You will then need to install the following modules:
+```
+$ pip install flask
+$ pip install requests
+```
+
+>NB: It is suggested you do this through `virtualenv` to prevent dependency conflicts with other projects; a guide to running Flask through virtualenv can be found [here](http://flask.pocoo.org/docs/0.12/installation/#installation).
+
+
+Finally, just run `server.py` to start the app:
+
+```
+$ python server.py
+```
 
 ## Developer account
-You will need to sign up to the developer portal on Vasttrafik to use this app. That will give you the key and secret needed to run it.
+Keys can be obtained from the [Västtrafik developer portal](https://developer.vasttrafik.se) after registering for an account.
 
 ## Future changes
 The intent is to parameterize the URL structure so that other bus, stop or track information can be passed into the app. 
